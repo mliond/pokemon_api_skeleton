@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+var Pokemon = require("./pokemon.js");
+
+window.pokemon = new Pokemon(1);
+
+var PokemonShowController = require("./PokemonShowController.js");
+var $container = $(".pokedex-container");
+
+window.controller = new PokemonShowController($container, pokemon);
