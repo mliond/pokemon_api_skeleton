@@ -5,10 +5,6 @@ var PokemonShowController = function ($parentEl, pokemon) {
 }
 
 PokemonShowController.prototype.render = function () {
-  var self = this;
-  this.pokemon.fetch(function () {
-    self.render();
-  });
   this.$el.html(this.pokemon.name);
   this.$parentEl.append(this.$el);
 }
