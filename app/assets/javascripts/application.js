@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+var $container = $(".pokedex-container");
+var Router = require("./app_router.js");
+
+window.router = new Router($container);
