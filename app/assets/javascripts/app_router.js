@@ -1,15 +1,16 @@
-var Pokemon = require("./pokemon.js");
-var PokemonShowController = require("./pokemonShowController.js");
+var Pokemon = require("./models/pokemon");
+var PokemonComponent = require("./components/pokemon");
 
 var Router = function ($container) {
   this.$container = $container;
 }
 
-Router.prototype.renderPokemonShow = function (id) {
+Router.prototype.renderPokemonComponent = function (id) {
   var pokemon = new Pokemon(id);
-  var pokemonShowController = new PokemonShowController(this.$container, pokemon);
+  var pokemonComponent = new PokemonComponent(this.$container, pokemon);
+
   pokemon.fetch(function () {
-    pokemonShowController.render();
+    pokemonComponent.render();
   });
 }
 
