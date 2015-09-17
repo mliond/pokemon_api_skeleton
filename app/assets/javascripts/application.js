@@ -13,10 +13,26 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-window.Pokemon = require('./models/pokemon.js')
 
-var $container = $(".pokedex-container");
-var Router = require("./app_router.js");
 
-window.router = new Router($container);
-window.pokemon = new Pokemon();
+var container = $(".pokedex-container");
+// window.container = container;
+
+// window.Pokemon = require('./models/pokemon.js');
+// window.Component = require('./components/pokemon.js');
+var AppRouter = require("./app_router.js");
+
+window.router = new AppRouter(container);
+
+
+
+$('input#pokedex').on('input', function(event) {
+  event.preventDefault();
+  var id = parseInt($('input#pokedex').val());
+  var my_pokemon = new Pokemon(id);
+  my_pokemon.fetch(function() {
+    var my_component = new Component(container, my_pokemon);
+    my_component.render();
+  });
+})
+
